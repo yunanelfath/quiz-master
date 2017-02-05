@@ -1,0 +1,28 @@
+.page-content.container
+  .row
+    .col-md-4.col-md-offset-4
+      .login-wrapper
+        .box
+          .content-wrap
+            h6
+              | Sign In
+            = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+              fieldset
+                .form-group
+                  = f.text_field :email, :autofocus => true, placeholder: "Email", class: "form-control"
+
+                .form-group
+                  = f.password_field :password, placeholder: "Password", class: "form-control"
+
+                - if devise_mapping.rememberable?
+                  .form-group
+                    .field
+                      = f.check_box :remember_me
+                      = f.label :remember_me
+
+                = f.submit "Login", class: "btn btn-lg btn-success btn-block", data: { disable_with: "Please wait..." }
+
+        .already
+          p
+            | Don't have an account yet?
+        = render "devise/shared/links"

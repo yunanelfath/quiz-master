@@ -32,14 +32,36 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'devise' #user management
+gem 'to_words' #http://stackoverflow.com/questions/3966159/number-to-english-word-conversion-rails
+gem 'slim-rails' # html.slim
+gem 'aasm' #https://github.com/aasm/aasm
+gem 'nprogress-rails' #https://github.com/caarlos0/nprogress-rails
+gem 'active_model_serializers', '0.8.1'
+gem 'coffee-script-source', '1.8.0' #http://stackoverflow.com/questions/28312460/object-doesnt-support-this-property-or-method-rails-windows-64bit
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'sprockets-coffee-react' # file cjsx
+gem 'bootstrap-sass'
+gem 'react-rails', '~> 1.4.0'
+gem 'lodash-rails'
+gem 'flux-rails'
+gem "js-routes" # Rails routing in JS
+gem 'react-bootstrap-rails'
+gem 'sweetalert-rails'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'jasmine-rails'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem 'annotate'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

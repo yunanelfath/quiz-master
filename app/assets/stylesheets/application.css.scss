@@ -12,4 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require admin-styles
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
