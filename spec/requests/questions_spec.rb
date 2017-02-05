@@ -15,7 +15,7 @@ RSpec.describe "Questions", type: :request do
   before :each do
     @user = User.create(email: 'test@gmail.com',password: 'asdfasdf')
 
-    login_as @user
+    login_as @user #http://stackoverflow.com/questions/23859653/rails-devise-rspec-undefined-method-sign-in
   end
   describe "GET /questions" do
     it "works! (now write some real specs)" do
