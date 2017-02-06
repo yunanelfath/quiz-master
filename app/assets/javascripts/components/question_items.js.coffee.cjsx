@@ -4,7 +4,7 @@
 
 QuestionItems = React.createClass
   propTypes:
-    csrfToken: PropTypes.string.isRequired
+    csrfToken: PropTypes.string
 
   getInitialState: ->
     {
@@ -69,7 +69,7 @@ QuestionItems = React.createClass
       { key: 'content', isClickable: true, value: 'Content' }
       { key: 'answer', value: 'Answer' }
     ]
-    <Row>
+    <Row className="question-items-display">
       <Col lg={12}>
         <FormGroup>
           <QuestionDetailModal modalType="questionNew" dispatchEvent={dispatchEvent} csrfToken={csrfToken}/>

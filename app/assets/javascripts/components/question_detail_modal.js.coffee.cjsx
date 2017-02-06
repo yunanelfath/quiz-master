@@ -51,7 +51,7 @@ QuestionDetailModal = React.createClass
     <span>
       {
         if @props.modalType == 'questionNew'
-          <a href="javascript:void(0)" onClick={@onToggleModal} className="btn btn-primary">New Question</a>
+          <a href="javascript:void(0)" onClick={@onToggleModal} className="btn btn-primary question-new">New Question</a>
         else
           <span></span>
       }

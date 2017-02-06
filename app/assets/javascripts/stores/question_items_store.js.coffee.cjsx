@@ -11,6 +11,10 @@ window.QuestionItemsStore = _.assign(new EventEmitter(), {
   formData: {}
   filteredForm: {}
   question: {}
+
+  setItems: (items) ->
+    @items = items
+
   emitChange: -> @emit(CHANGE_EVENT)
   addChangeListener: (callback) -> @addListener(CHANGE_EVENT, callback)
 
