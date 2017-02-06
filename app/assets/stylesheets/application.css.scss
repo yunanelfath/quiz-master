@@ -13,6 +13,17 @@
  *= require_tree .
  *= require_self
  *= require admin-styles
+ *= require font-awesome.min
+ *= require sweetalert
  */
+ .modal-header-square {
+   background: #C0C0C0;
+   // font-family: sans-serif !important;
+   font-family: "Lato", "proxima-nova", "montserratregular", sans-serif !important;
+   border: 0px;
+ }
+ .help-block{
+   font-size: 12px !important;font-weight: bold !important;
+ }
  @import "bootstrap-sprockets";
  @import "bootstrap";

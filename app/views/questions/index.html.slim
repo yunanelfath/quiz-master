@@ -1,23 +1,20 @@
-h1 Listing questions
+.col-md-12
+  .content-box-header.panel-heading
+    .panel-title
+      | Questions
+    .panel-options
+      a[data-rel="collapse" href="#"]
+        i.glyphicon.glyphicon-refresh
+      a[data-rel="reload" href="#"]
+        i.glyphicon.glyphicon-cog
+  .content-box-large.box-with-header
+    = react_component('QuestionItems', {csrfToken: form_authenticity_token})
+    br
+    br
 
-table
-  thead
-    tr
-      th Content
-      th Answer
-      th
-      th
-      th
 
-  tbody
-    - @questions.each do |question|
-      tr
-        td = question.content
-        td = question.answer
-        td = link_to 'Show', question
-        td = link_to 'Edit', edit_question_path(question)
-        td = link_to 'Destroy', question, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Question', new_question_path
+javascript:
+  dispatcher.dispatch({
+    actionType: 'question-items-global-attributes-setter',
+    attributes: {items: #{json_for(@questions, nil, {includes: []}).html_safe}}
+  })

@@ -10,4 +10,6 @@
 #
 
 class Question < ActiveRecord::Base
+  validates :answer, presence: true
+  validates :content, presence: true
 end

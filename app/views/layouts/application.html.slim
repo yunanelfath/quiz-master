@@ -12,6 +12,9 @@ html
     - if alert
       p.alert.alert-danger
         = alert
-    = yield
+    - if user_signed_in?
+      = render 'wrapper/main'
+    - else
+      = yield
 
   javascript:

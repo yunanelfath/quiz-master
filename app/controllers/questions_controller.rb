@@ -1,15 +1,18 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_questions, only: [:index, :destroy_all]
 
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+    respond_to do |format|
+      format.json { render json: json_for(@question) }
+    end
   end
 
   # GET /questions/new
@@ -28,11 +31,14 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        set_questions
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @question.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -42,11 +48,14 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
+        set_questions
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @question }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @question.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -61,11 +70,25 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy_all
+    ids = params[:ids].split(",").map{|e| e.to_i}
+    @questions = @questions.where(id: ids)
+    @questions.destroy_all
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
     end
+
+    def set_questions
+      @questions = Question.all
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params

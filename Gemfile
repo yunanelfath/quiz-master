@@ -48,6 +48,7 @@ gem 'flux-rails'
 gem "js-routes" # Rails routing in JS
 gem 'react-bootstrap-rails'
 gem 'sweetalert-rails'
+gem "factory_girl_rails", "~> 4.0"
 
 
 group :development, :test do

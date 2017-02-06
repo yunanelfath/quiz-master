@@ -1,0 +1,10 @@
+= render 'wrapper/header'
+
+.page-content style="margin-bottom: 100px"
+  .row
+    .col-md-2
+      = render 'wrapper/menu_left'
+
+    .col-md-10
+      .row
+        = yield

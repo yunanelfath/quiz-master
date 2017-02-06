@@ -1,0 +1,19 @@
+.header
+  .container
+    .row
+      .col-md-5.pull-left
+        .logo
+          h1
+            a[href="#"]
+              | Quis Master
+      .col-md-2.pull-right
+        .navbar.navbar-inverse[role="banner"]
+          nav.collapse.navbar-collapse.bs-navbar-collapse.navbar-right[role="navigation"]
+            ul.nav.navbar-nav
+              li.dropdown
+                a.dropdown-toggle[data-toggle="dropdown" href="#"]
+                  | My Account
+                  b.caret
+                ul.dropdown-menu.animated.fadeInUp[style=""]
+                  li
+                    = link_to "Logout", destroy_user_session_path,:method => :delete, data: {no_turbolink: true}, class: "text-blue"
