@@ -41,6 +41,60 @@ RSpec.describe QuestionsController do
     sign_in @user
   end
 
+  describe "PUT #update" do
+    it 'updates with valid data' do
+      put :update, {
+        id: @question.id,
+        question: {
+          answer: '12',
+          content: 'How many a man?'
+        },
+        commit: 'Send',
+        format: :js
+      }
+      expect(response.status).to eq 200
+      @question.reload
+      expect(assigns(:question).answer).to eq @question.answer
+    end
+    it 'udpate with blank data should get validate' do
+      put :update, {
+        id: @question.id,
+        question: {
+          answer: '12',
+          content: ''
+        },
+        commit: 'Send',
+        format: :js
+      }
+      expect(response.status).to eq 422
+    end
+  end
+
+  describe "POST #create" do
+    it 'create with blank/invalid data should get validate' do
+      post :create, {
+        question: {
+          answer: '',
+          content: ''
+        },
+        format: :js
+      }
+      expect(response.status).to eq 422
+      expect(assigns(:question).valid?).to eq false
+    end
+    it 'create with valid data' do
+      post :create, {
+        question: {
+          answer: 'How many books?',
+          content: 20
+        },
+        format: :js
+      }
+      expect(response.status).to eq 200
+      expect(assigns(:question).valid?).to eq true
+    end
+  end
+
   describe "GET index" do
     it 'correctly @questions' do
       get :index, {}

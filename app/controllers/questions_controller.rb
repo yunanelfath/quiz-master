@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @question.errors, status: :unprocessable_entity }
-        format.js
+        format.js { render status: :unprocessable_entity}
       end
     end
   end
@@ -55,7 +55,7 @@ class QuestionsController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @question.errors, status: :unprocessable_entity }
-        format.js
+        format.js { render status: :unprocessable_entity}
       end
     end
   end
