@@ -1,25 +1,20 @@
-h1 Listing quizzes
+.col-md-12
+  .content-box-header.panel-heading
+    .panel-title
+      | Questions
+    .panel-options
+      a[data-rel="collapse" href="#"]
+        i.glyphicon.glyphicon-refresh
+      a[data-rel="reload" href="#"]
+        i.glyphicon.glyphicon-cog
+  .content-box-large.box-with-header
+    = react_component('QuizItems', {csrfToken: form_authenticity_token})
+    br
+    br
 
-table
-  thead
-    tr
-      th User
-      th Question
-      th Answer
-      th
-      th
-      th
 
-  tbody
-    - @quizzes.each do |quiz|
-      tr
-        td = quiz.user_id
-        td = quiz.question_id
-        td = quiz.answer
-        td = link_to 'Show', quiz
-        td = link_to 'Edit', edit_quiz_path(quiz)
-        td = link_to 'Destroy', quiz, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Quiz', new_quiz_path
+javascript:
+  dispatcher.dispatch({
+    actionType: 'quiz-items-global-attributes-setter',
+    attributes: {items: #{json_for(@quizzes, nil, {includes: []}).html_safe}}
+  })

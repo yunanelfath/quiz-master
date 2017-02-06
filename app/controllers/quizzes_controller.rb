@@ -1,10 +1,10 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
+  before_action :set_quizzes, only: [:index, :destroy_all]
 
   # GET /quizzes
   # GET /quizzes.json
   def index
-    @quizzes = Quiz.all
   end
 
   # GET /quizzes/1
@@ -65,6 +65,10 @@ class QuizzesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz
       @quiz = Quiz.find(params[:id])
+    end
+
+    def set_quizzes
+      @quizzes = Quiz.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

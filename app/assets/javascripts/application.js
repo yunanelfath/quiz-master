@@ -31,4 +31,6 @@
 //= require components/question_items
 //= require components/question_detail_modal
 //= require components/question_form
+//= require components/quiz_items
+//= require components/quiz_detail_modal
 //= require_tree .
