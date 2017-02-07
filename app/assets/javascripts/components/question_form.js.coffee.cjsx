@@ -42,10 +42,10 @@ QuestionForm = React.createClass
             <Col xs={9} sm={9}>
               {
                 if formType == 'show'
-                  <span style={textTransform: 'capitalize'}>{if content then $(content).html() else '-'}</span>
+                  <span style={textTransform: 'capitalize'}>{if content then content else '-'}</span>
                 else
                   <span>
-                    <ReactQuill theme="snow"
+                    <ReactQuill theme="snow" className="editor" value={content}
                       onChange={@onChangeTextInput.bind(@, 'content')}/>
                     <input type="hidden" value={question?.content} name="question[content]"/>
                   </span>
