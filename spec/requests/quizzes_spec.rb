@@ -19,6 +19,11 @@
 require 'rails_helper'
 
 RSpec.describe "Quizzes", type: :request do
+  before :each do
+    @user = create(:user)
+
+    login_as @user #http://stackoverflow.com/questions/23859653/rails-devise-rspec-undefined-method-sign-in
+  end
   describe "GET /quizzes" do
     it "works! (now write some real specs)" do
       get quizzes_path
