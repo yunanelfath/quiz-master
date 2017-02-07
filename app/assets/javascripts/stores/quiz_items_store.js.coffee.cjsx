@@ -5,11 +5,13 @@ ITEM_CHANGE_EVENT = 'change:item'
 
 window.QuizItemsStore = _.assign(new EventEmitter(), {
   items: []
+  questionItems: []
   formType: 'show'
 
   showModals: {}
   formData: {}
   quiz: {}
+  answeredTo: 0
 
   setItems: (items) ->
     @items = items
@@ -31,4 +33,9 @@ dispatcher.register (payload) ->
       QuizItemsStore.emitChange()
     when 'quiz-form-attributes-setter'
       _.assign(QuizItemsStore.quiz, payload.attributes)
+      QuizItemsStore.emitChange()
+    when 'quiz-answer-item-attributes-setter'
+      items = QuizItemsStore.questionItems
+      item = _.find(items, (_item) -> _item.id == payload.attributes.id)
+      _.assign(item, payload.attributes.item)
       QuizItemsStore.emitChange()

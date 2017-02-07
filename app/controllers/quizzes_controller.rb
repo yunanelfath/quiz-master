@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
   before_action :set_quizzes, only: [:index, :destroy_all]
+  before_action :set_questions, only: [:index]
 
   # GET /quizzes
   # GET /quizzes.json
@@ -29,7 +30,7 @@ class QuizzesController < ApplicationController
     respond_to do |format|
       if @quiz.save
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
-        format.json { render :show, status: :created, location: @quiz }
+        format.json { render json: json_for(@quiz, nil, {includes: [:answered, :result]}) }
       else
         format.html { render :new }
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
@@ -71,8 +72,13 @@ class QuizzesController < ApplicationController
       @quizzes = Quiz.all
     end
 
+    def set_questions
+      @questions = Question.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
+      params[:quiz][:user_id] = current_user.id
       params.require(:quiz).permit(:user_id, :question_id, :answer)
     end
 end

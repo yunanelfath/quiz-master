@@ -16,5 +16,5 @@
 javascript:
   dispatcher.dispatch({
     actionType: 'quiz-items-global-attributes-setter',
-    attributes: {items: #{json_for(@quizzes, nil, {includes: []}).html_safe}}
+    attributes: {items: #{json_for(@quizzes, nil, {includes: [:content]}).html_safe}, questionItems: #{json_for(@questions, nil, {only: [:id, :content]}).html_safe}}
   })
