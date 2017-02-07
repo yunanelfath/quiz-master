@@ -18,9 +18,12 @@
 //= require bootstrap-sprockets
 //= require key_generator
 //= require react
+//= require react-server
 //= require react_ujs
+//= require quill
 //= require react_bootstrap
 //= require react-bootstrap-table
+//= require react-quill
 //= require js-routes
 //= require sweetalert
 // flux config

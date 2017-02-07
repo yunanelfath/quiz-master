@@ -15,7 +15,14 @@
  *= require admin-styles
  *= require font-awesome.min
  *= require sweetalert
+ *= require quill.snow.css
  */
+ .quill{
+   border: 1px solid #000;
+ }
+ .quill .quill-contents{
+   background-color: #fff;
+ }
  .modal-header-square {
    background: #C0C0C0;
    // font-family: sans-serif !important;

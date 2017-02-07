@@ -42,12 +42,14 @@ QuestionForm = React.createClass
             <Col xs={9} sm={9}>
               {
                 if formType == 'show'
-                  <span style={textTransform: 'capitalize'}>{if content then content else '-'}</span>
+                  <span style={textTransform: 'capitalize'}>{if content then $(content).html() else '-'}</span>
                 else
-                  <textarea className="form-control" placeholder="Content"
-                    value={question?.content}
-                    onChange={@onChangeTextInput.bind(@, 'content')}
-                    name="question[content]"></textarea>
+                  <span>
+                    <ReactQuill theme="snow"
+                      onChange={@onChangeTextInput.bind(@, 'content')}/>
+                    <input type="hidden" value={question?.content} name="question[content]"/>
+                  </span>
+
               }
               {
                 if formData?.content
